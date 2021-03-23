@@ -52,4 +52,4 @@ async def on_voice_state_update(member, before, after):
         general = client.get_channel(822902651048951841)
         await general.send('hello ' + member.name)
 
-client.run('ODIyODg3MzI2MDExMDk3MDk4.YFYziw.in6op1s82a4PDUWW1u5lK2cAzrk')
+client.run('token')
