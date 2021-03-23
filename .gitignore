@@ -1,4 +1,4 @@
 *.csv
 *.ipynb
 *.code-workspace
-statbot.py
+luckybot.py
