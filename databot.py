@@ -1,4 +1,5 @@
 import pandas as pd
+import utils
 import random
 import discord
 import logging
@@ -8,7 +9,10 @@ logging.basicConfig(level=logging.INFO)
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
 
-# shows that the bot is active
+# client variables
+client.permutations = []
+
+# shows that the bot is active.
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -28,7 +32,7 @@ async def on_message(message):
         if cmd == 'scan':
             data = pd.DataFrame(columns = ['content', 'date', 'author'])
 
-            # checks to see if the message is a '!scan' command
+            # checks to see if the message is a '!scan' command.
             def is_command(msg):
                 if len(msg.content) == 0:
                     return False
@@ -49,7 +53,7 @@ async def on_message(message):
             data.to_csv(file_location)
 
         # INHOUSE command: checks to see which channel the user is in and assigns random teams based
-        #                  on the users in the channel, tells you to use !reroll for new teams
+        #                  on the users in the channel, tells you to use !reroll for new teams.
         if cmd == 'inhouse':
             voiceChannel = message.author.voice.channel
             textChannel = message.channel
@@ -59,7 +63,7 @@ async def on_message(message):
             teamsize = len(channelMembers) // 2
             team1 = channelMembers[teamsize:]
             team2 = channelMembers[:teamsize]
-            permutations = [team1]
+            cleint.permutations = [team1]
 
             team1 = [member.name for member in team1]
             team2 = [member.name for member in team2]
@@ -72,6 +76,7 @@ async def on_message(message):
             
             await textChannel.send(string)
             
+
 '''
 @client.event
 async def on_voice_state_update(member, before, after):
