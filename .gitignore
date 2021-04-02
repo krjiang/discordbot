@@ -1,4 +1,3 @@
 *.csv
-*.ipynb
 *.code-workspace
 luckybot.py
